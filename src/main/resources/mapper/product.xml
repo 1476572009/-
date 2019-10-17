@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="baicheng.bcxiangmuguanli.dao.ProductDao">
+
+    <resultMap id="ProductMap" type="baicheng.bcxiangmuguanli.model.Product">
+        <id property="product_id" column="PRODUCT_ID" jdbcType="VARCHAR"/>
+        <result property="product_name" column="PRODUCT_NAME" jdbcType="VARCHAR"/>
+        <result property="product_boss" column="PRODUCT_BOSS" jdbcType="VARCHAR"/>
+        <result property="product_start_time" column="PRODUCT_START_TIME" jdbcType="VARCHAR"/>
+        <result property="product_end_time" column="PRODUCT_END_TIME" jdbcType="VARCHAR"/>
+        <result property="product_explain" column="PRODUCT_EXPLAIN" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="adduser" >
+        insert into user_pro (USER_ID,PRODUCCT_ID,START_TIME,END_TIME) values (#{user_id},#{product_id},#{start_time},#{end_time})
+    </insert>
+
+    <update id="deluser">
+        update user_pro set status=0 where user_id=#{user_id} and product_id=#{product_id}
+    </update>
+
+
+
+</mapper>

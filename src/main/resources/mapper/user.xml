@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="baicheng.bcxiangmuguanli.dao.UserDao">
+
+    <resultMap id="UserMap" type="baicheng.bcxiangmuguanli.vo.User_Product">
+        <id property="user_id" column="USER_ID" jdbcType="VARCHAR"/>
+        <result property="user_name" column="USER_NAME" jdbcType="VARCHAR"/>
+        <result property="user_sex" column="USER_SEX" jdbcType="VARCHAR"/>
+        <result property="user_job" column="USER_JOB" jdbcType="VARCHAR"/>
+        <result property="product_id" column="PRODUCT_ID" jdbcType="VARCHAR"/>
+        <result property="product_name" column="PRODUCT_NAME" jdbcType="VARCHAR"/>
+        <result property="product_boss" column="PRODUCT_BOSS" jdbcType="VARCHAR"/>
+        <result property="product_explain" column="PRODUCT_EXPLAIN" jdbcType="VARCHAR"/>
+        <result property="starttime" column="START_TIME" jdbcType="VARCHAR"/>
+        <result property="endtime" column="END_TIME" jdbcType="VARCHAR"/>
+    </resultMap>
+
+<!--查询全部员工-->
+    <select id="selectall"  resultMap="UserMap">
+        SELECT
+            u.user_id,
+            u.user_name,
+            u.user_sex,
+            u.user_job,
+            up.start_time,
+            up.end_time,
+            p.product_id,
+            p.product_name,
+            p.product_boss,
+            p.product_explain
+        FROM
+            USER u
+            LEFT JOIN user_pro up ON u.user_id = up.user_id
+            LEFT JOIN product p ON up.product_id = p.product_id
+        WHERE
+            up.STATUS = '1'
+        <if test="user_name!=null  and user_name!=''">
+            and u.user_name like #{user_name}
+        </if>
+        <if test="product_name!=null  and product_name!=''">
+            and p.product_name like #{product_name}
+        </if>
+        <if test="date!=null  and date!=''">
+            and #{date} between up.start_time and up.end_time
+        </if>
+    </select>
+
+
+</mapper>

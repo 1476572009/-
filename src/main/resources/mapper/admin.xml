@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="baicheng.bcxiangmuguanli.dao.AdminDao">
+
+    <resultMap id="AdminMap" type="baicheng.bcxiangmuguanli.model.Admin">
+        <id property="admin_id" column="ADMIN_ID" jdbcType="VARCHAR"/>
+        <result property="admin_name" column="ADMIN_NAME" jdbcType="VARCHAR"/>
+        <result property="admin_username" column="ADMIN_USERNAME" jdbcType="VARCHAR"/>
+        <result property="admin_password" column="ADMIN_PASSWORD" jdbcType="VARCHAR"/>
+        <result property="admin_lv" column="ADMIN_LV" jdbcType="VARCHAR"/>
+    </resultMap>
+
+<!--登录-->
+    <select id="login" parameterType="baicheng.bcxiangmuguanli.model.Admin" resultMap="AdminMap">
+        select * from admin where ADMIN_USERNAME=#{admin_username} and ADMIN_PASSWORD=#{admin_password}
+    </select>
+
+
+</mapper>
