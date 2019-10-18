@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="baicheng.bcxiangmuguanli.dao.JournalQueryDao">
+
+    <select id="journalQuery" parameterType="HashMap" resultType="baicheng.bcxiangmuguanli.model.Userjron">
+        select `JOURNAL_ID` JournalId ,
+        `JOURNAL_NAME` JournalName,
+         `JOURNAL_NUMBER` JournalNumber,
+          `JOURNAL_TIME` JournalTime,
+           `JOURNAL_PROJECT` JournalProject,
+         `JOURNAL_WORK` JournalWork,
+         `JOURNAL_OVERTIME` JournalOverTime,
+          JOURNAL_WC JournalWc,
+          `USER_ID` UserId,
+          `JOURNAL_Submission` JournalSubmission
+          from userjournal
+              <where>
+                  <if test="id!=null and id!='' ">
+                      and JOURNAL_NUMBER=#{id}
+                  </if>
+                  <if test="name!=null and name!='' ">
+                      and JOURNAL_TIME=#{name}
+                  </if>
+                  <if test="project!=null and project!=''">
+                      and JOURNAL_PROJECT=#{project}
+                  </if>
+              </where>
+
+        ORDER BY JOURNAL_TIME DESC
+    </select>
+</mapper>

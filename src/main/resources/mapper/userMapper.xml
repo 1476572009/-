@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="baicheng.bcxiangmuguanli.dao.UserQueryInterface">
+<select id="userQuery" parameterType="String" resultType="baicheng.bcxiangmuguanli.model.UserLi">
+select user_id WorkId,user_name userName from user where USER_ID=#{id}
+</select>
+    <resultMap id="OrderResultMap1" type="baicheng.bcxiangmuguanli.model.Userjron" >
+        <id column="JOURNAL_ID" property="JournalId" jdbcType="INTEGER" />
+        <result column="JOURNAL_NAME" property="JournalName" jdbcType="VARCHAR" />
+        <result column="JOURNAL_NUMBER" property="JournalNumber" jdbcType="VARCHAR" />
+        <result column="JOURNAL_TIME" property="JournalTime" jdbcType="VARCHAR" />
+        <result column="JOURNAL_PROJECT" property="JournalProject" jdbcType="VARCHAR" />
+        <result column="JOURNAL_WORK" property="JournalWork" jdbcType="VARCHAR" />
+        <result column="JOURNAL_OVERTIME" property="JournalOverTime" jdbcType="VARCHAR" />
+        <result column="JOURNAL_WC" property="JournalWc" jdbcType="VARCHAR" />
+        <result column="USER_ID" property="UserId" jdbcType="INTEGER" />
+
+    </resultMap>
+
+    <insert id="LogAdd">
+INSERT INTO `baicheng`.`userjournal`( `JOURNAL_NAME`, `JOURNAL_NUMBER`, `JOURNAL_TIME`, `JOURNAL_PROJECT`, `JOURNAL_WORK`, `JOURNAL_OVERTIME`, `JOURNAL_WC`, `USER_ID`, `JOURNAL_Submission`)
+VALUES ( #{JournalName},#{JournalNumber},#{JournalTime}, #{JournalProject},#{JournalWork},#{JournalOverTime},#{JournalWc}, #{UserId},now());
+    </insert>
+</mapper>
