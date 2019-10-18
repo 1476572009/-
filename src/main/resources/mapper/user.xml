@@ -45,6 +45,9 @@
         <if test="date!=null  and date!=''">
             and #{date} between up.start_time and up.end_time
         </if>
+        <if test="date==null  or date==''">
+            and DATE_FORMAT(now(),'%Y-%m-%d') between up.start_time and up.end_time
+        </if>
     </select>
 
 

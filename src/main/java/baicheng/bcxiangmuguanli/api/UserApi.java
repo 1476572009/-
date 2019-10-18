@@ -26,17 +26,12 @@ public class UserApi {
     public JsonResult select(String user_name,String product_name,String date){
         String uname=null;
         String pname=null;
-
-        System.out.println(user_name);
-        System.out.println(product_name);
         if(user_name!=null&&user_name!=""){
             uname="%"+user_name+"%";
         }
         if(product_name!=null&&product_name!=""){
             pname="%"+product_name+"%";
         }
-        System.out.println(uname);
-        System.out.println(pname);
         try {
             List list=us.selectall(uname,pname,date);
             result=new JsonResult("200","查询成功",list);

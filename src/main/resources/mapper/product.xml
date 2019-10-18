@@ -13,14 +13,20 @@
         <result property="product_explain" column="PRODUCT_EXPLAIN" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <!--项目组增加成员-->
     <insert id="adduser" >
-        insert into user_pro (USER_ID,PRODUCCT_ID,START_TIME,END_TIME) values (#{user_id},#{product_id},#{start_time},#{end_time})
+        insert into user_pro (USER_ID,PRODUCT_ID,START_TIME,END_TIME) values (#{user_id},#{product_id},#{start_time},#{end_time})
     </insert>
 
+    <!--项目组减少成员-->
     <update id="deluser">
         update user_pro set status=0 where user_id=#{user_id} and product_id=#{product_id}
     </update>
 
+    <!--查询全部项目组-->
+    <select id="queryall" resultMap="ProductMap">
+        select * from product where DATE_FORMAT(now(),'%Y-%m-%d') between product_start_time and product_end_time
+    </select>
 
 
 </mapper>
