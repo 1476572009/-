@@ -3,7 +3,6 @@ package baicheng.bcxiangmuguanli.api;
 
 import baicheng.bcxiangmuguanli.model.Userjron;
 import baicheng.bcxiangmuguanli.service.UserLogInterface;
-import baicheng.bcxiangmuguanli.vo.Auth;
 import baicheng.bcxiangmuguanli.vo.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
