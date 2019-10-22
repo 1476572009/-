@@ -4,7 +4,6 @@ package baicheng.bcxiangmuguanli.api;
 
 import baicheng.bcxiangmuguanli.model.UserLi;
 import baicheng.bcxiangmuguanli.service.UserQueryService;
-import baicheng.bcxiangmuguanli.vo.Auth;
 import baicheng.bcxiangmuguanli.vo.JsonResult;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;

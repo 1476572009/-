@@ -32,9 +32,9 @@ public class ProductApi {
 
     //同意
     @RequestMapping("/tongyi")
-    public JsonResult tongyi(String user_id,String product_id,String start_time,String end_time,String alive_now,String now_product_id,String id,String is_agree){
+    public JsonResult tongyi(String user_id,String user_name,String product_id,String product_name,String start_time,String end_time,String alive_now,String now_product_id,String id,String is_agree){
         try {
-            int i=ps.tongyi(user_id,product_id,start_time,end_time,alive_now,now_product_id,id,is_agree);
+            int i=ps.tongyi(user_id,user_name,product_id,product_name,start_time,end_time,alive_now,now_product_id,id,is_agree);
             result=new JsonResult("200","成功",i);
         }catch (Exception e){
             e.printStackTrace();
